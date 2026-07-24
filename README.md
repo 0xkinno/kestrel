@@ -59,21 +59,7 @@ IGAD's own brief names the real gap in early warning: information has to be gene
 
 ## System architecture
 
-```mermaid
-flowchart TD
-    A["Open-Meteo (real weather data)"] --> B["Hazard Classifier (rule-based thresholds)"]
-    B --> C["Groq (plain-language warning draft)"]
-    C --> D["Admin Review (/admin, human approval + edit)"]
-    D --> E["Dispatch"]
-    E --> E1["Telegram (real messages, tap-to-confirm)"]
-    E --> E2["SMS / USSD (in-app simulation, labeled)"]
-    E1 --> F["Confirmation Recorded"]
-    E2 --> F
-    F --> G["Aggregation (delivery + confirmation rates)"]
-    G --> H["Groq (escalation suggestion, when confirmation is lagging)"]
-    G --> I["Dashboard (/dashboard, live per-location view)"]
-    H --> I
-```
+![Kestrel system architecture](docs/diagrams/architecture.svg)
 
 ### Request lifecycle, step by step
 

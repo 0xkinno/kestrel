@@ -1,0 +1,116 @@
+<svg viewBox="0 0 1000 1080" xmlns="http://www.w3.org/2000/svg" font-family="Segoe Print, Comic Sans MS, cursive">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1A1815" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="1080" fill="#F7F4EE" />
+
+  <!-- box helper pattern: two overlapping rects per node for a hand-drawn double-line look -->
+
+  <!-- R1 Open-Meteo -->
+  <g>
+    <rect x="332" y="22" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(-0.4 500 52)" />
+    <rect x="328" y="18" width="336" height="60" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(0.5 500 48)" />
+    <text x="500" y="46" text-anchor="middle" font-size="17" fill="#1A1815">Open-Meteo</text>
+    <text x="500" y="67" text-anchor="middle" font-size="13" fill="#55504A">real weather data</text>
+  </g>
+
+  <!-- R2 Hazard Classifier -->
+  <g>
+    <rect x="332" y="142" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(0.5 500 172)" />
+    <rect x="328" y="138" width="336" height="60" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(-0.4 500 168)" />
+    <text x="500" y="166" text-anchor="middle" font-size="17" fill="#1A1815">Hazard Classifier</text>
+    <text x="500" y="187" text-anchor="middle" font-size="13" fill="#55504A">rule-based thresholds</text>
+  </g>
+
+  <!-- R3 Groq draft (accent) -->
+  <g>
+    <rect x="332" y="262" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#C8873A" stroke-width="2.4" transform="rotate(-0.5 500 292)" />
+    <rect x="328" y="258" width="336" height="60" rx="9" fill="none" stroke="#C8873A" stroke-width="1.4" transform="rotate(0.4 500 288)" />
+    <text x="500" y="286" text-anchor="middle" font-size="17" fill="#1A1815">Groq</text>
+    <text x="500" y="307" text-anchor="middle" font-size="13" fill="#6B4319">plain-language warning draft</text>
+  </g>
+
+  <!-- R4 Admin Review (human checkpoint) -->
+  <g>
+    <rect x="312" y="382" width="376" height="60" rx="9" fill="#F7F4EE" stroke="#8B3F2A" stroke-width="2.4" transform="rotate(0.4 500 412)" />
+    <rect x="308" y="378" width="376" height="60" rx="9" fill="none" stroke="#8B3F2A" stroke-width="1.4" transform="rotate(-0.5 500 408)" />
+    <text x="500" y="406" text-anchor="middle" font-size="17" fill="#1A1815">Admin Review</text>
+    <text x="500" y="427" text-anchor="middle" font-size="13" fill="#55504A">/admin, human approval + edit</text>
+  </g>
+
+  <!-- R5 Dispatch -->
+  <g>
+    <rect x="392" y="502" width="216" height="58" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(-0.4 500 531)" />
+    <rect x="388" y="498" width="216" height="58" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(0.5 500 527)" />
+    <text x="500" y="536" text-anchor="middle" font-size="17" fill="#1A1815">Dispatch</text>
+  </g>
+
+  <!-- R6 left: Telegram (real) -->
+  <g>
+    <rect x="42" y="622" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(0.5 210 652)" />
+    <rect x="38" y="618" width="336" height="60" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(-0.4 210 648)" />
+    <text x="210" y="646" text-anchor="middle" font-size="16" fill="#1A1815">Telegram</text>
+    <text x="210" y="667" text-anchor="middle" font-size="12.5" fill="#55504A">real messages, tap-to-confirm</text>
+  </g>
+
+  <!-- R6 right: SMS / USSD (simulated) -->
+  <g>
+    <rect x="622" y="622" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#8A847B" stroke-width="2" stroke-dasharray="6 4" transform="rotate(-0.5 790 652)" />
+    <rect x="618" y="618" width="336" height="60" rx="9" fill="none" stroke="#8A847B" stroke-width="1.4" stroke-dasharray="6 4" transform="rotate(0.4 790 648)" />
+    <text x="790" y="646" text-anchor="middle" font-size="16" fill="#1A1815">SMS / USSD</text>
+    <text x="790" y="667" text-anchor="middle" font-size="12.5" fill="#55504A">in-app simulation, labeled</text>
+  </g>
+
+  <!-- R7 Confirmation Recorded -->
+  <g>
+    <rect x="332" y="742" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(-0.4 500 772)" />
+    <rect x="328" y="738" width="336" height="60" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(0.5 500 768)" />
+    <text x="500" y="778" text-anchor="middle" font-size="17" fill="#1A1815">Confirmation Recorded</text>
+  </g>
+
+  <!-- R8 Aggregation -->
+  <g>
+    <rect x="312" y="862" width="376" height="60" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(0.5 500 892)" />
+    <rect x="308" y="858" width="376" height="60" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(-0.4 500 888)" />
+    <text x="500" y="886" text-anchor="middle" font-size="17" fill="#1A1815">Aggregation</text>
+    <text x="500" y="907" text-anchor="middle" font-size="13" fill="#55504A">delivery + confirmation rates</text>
+  </g>
+
+  <!-- R9 left: Groq escalation (accent) -->
+  <g>
+    <rect x="42" y="982" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#C8873A" stroke-width="2.4" transform="rotate(-0.5 210 1012)" />
+    <rect x="38" y="978" width="336" height="60" rx="9" fill="none" stroke="#C8873A" stroke-width="1.4" transform="rotate(0.4 210 1008)" />
+    <text x="210" y="1006" text-anchor="middle" font-size="16" fill="#1A1815">Groq</text>
+    <text x="210" y="1027" text-anchor="middle" font-size="12.5" fill="#6B4319">escalation suggestion</text>
+  </g>
+
+  <!-- R9 right: Dashboard -->
+  <g>
+    <rect x="622" y="982" width="336" height="60" rx="9" fill="#F7F4EE" stroke="#1A1815" stroke-width="2" transform="rotate(0.4 790 1012)" />
+    <rect x="618" y="978" width="336" height="60" rx="9" fill="none" stroke="#1A1815" stroke-width="1.4" transform="rotate(-0.5 790 1008)" />
+    <text x="790" y="1006" text-anchor="middle" font-size="16" fill="#1A1815">Dashboard</text>
+    <text x="790" y="1027" text-anchor="middle" font-size="12.5" fill="#55504A">/dashboard, live per-location view</text>
+  </g>
+
+  <!-- arrows -->
+  <path d="M500,84 Q498,110 500,140" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M500,204 Q502,230 500,260" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M500,324 Q498,350 500,380" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M500,444 Q502,470 500,500" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <path d="M460,562 Q340,590 220,620" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M540,562 Q660,590 780,620" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <path d="M230,684 Q360,712 480,742" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M770,684 Q640,712 520,742" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <path d="M500,804 Q498,830 500,860" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <path d="M460,924 Q340,952 220,980" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M540,924 Q660,952 780,980" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <path d="M380,1012 Q500,1000 618,1012" fill="none" stroke="#1A1815" stroke-width="2" marker-end="url(#arrowhead)" />
+</svg>
