@@ -5,7 +5,7 @@
 ![Region](https://img.shields.io/badge/Region-IGAD_(8_Locations)-2E7A57?style=flat-square&labelColor=141311)
 ![AI](https://img.shields.io/badge/AI_Provider-Groq-9A6E1E?style=flat-square&labelColor=141311)
 ![Data](https://img.shields.io/badge/Data_Source-Open_Meteo-4E5F78?style=flat-square&labelColor=141311)
-![Status](https://img.shields.io/badge/Status-Locally_Verified-2E7A57?style=flat-square&labelColor=141311)
+![Status](https://img.shields.io/badge/Status-Live_on_Vercel-2E7A57?style=flat-square&labelColor=141311)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square&labelColor=141311)
 
 > Most early-warning systems stop at delivery. Kestrel proves comprehension. A hazard reading becomes a plain-language warning, a human officer approves it, a real recipient receives and taps to confirm they understood it, and a live dashboard shows exactly where that understanding is failing, before the damage is done.
@@ -34,12 +34,11 @@ Real captures from the running app, taken against live data (real hazard signals
 
 | Resource | Link |
 |---|---|
-| **Local dev** | `http://localhost:3000` (running now) |
-| **Live site** | pending deploy |
-| **Admin console** | pending deploy (`/admin` locally) |
-| **Verification dashboard** | pending deploy (`/dashboard` locally) |
+| **Live site** | [kestrel-pi.vercel.app](https://kestrel-pi.vercel.app) |
+| **Admin console** | [kestrel-pi.vercel.app/admin](https://kestrel-pi.vercel.app/admin) |
+| **Verification dashboard** | [kestrel-pi.vercel.app/dashboard](https://kestrel-pi.vercel.app/dashboard) |
 | **Telegram bot** | [@kestrel001_Bot](https://t.me/kestrel001_Bot) |
-| **GitHub** | pending push |
+| **GitHub** | [github.com/0xkinno/kestrel](https://github.com/0xkinno/kestrel) |
 | **Hackathon** | IGAD Hackathon 2026, Smarter Early Warning, Stronger Communities |
 
 ---
@@ -252,14 +251,13 @@ Mapped to the hackathon's own judging criteria.
 
 ## Status
 
-Every phase of the build spec has been implemented and verified live, not just written and inspected as code. Confirmed against real credentials in this session:
+Every phase of the build spec has been implemented, verified live, and deployed, not just written and inspected as code.
 
 - Real Open-Meteo readings pulled for all 8 seeded locations, producing real hazard signals (including an EMERGENCY drought signal for Lodwar, Kenya and a WATCH flood signal for Gambela, Ethiopia).
-- Real Groq-generated warnings, reviewed and approved through `/admin`.
+- Real Groq-generated warnings, reviewed and approved through `/admin`, with a single-warning-per-hazard-signal guard enforced at the database level to prevent duplicate drafts.
 - A real message sent through the Telegram bot [@kestrel001_Bot](https://t.me/kestrel001_Bot), received, tapped, and correctly recorded in that warning's live confirmation stats.
 - The verification dashboard showing real per-location confirmation rates and correctly flagging a location below the 50% escalation threshold.
 - A real Groq-generated escalation suggestion, produced from the actual confirmation numbers.
-
-Not yet done: the GitHub repository has not been pushed, and the app has not been deployed to Vercel. Both are pending an explicit go-ahead before proceeding, since they are publishing actions.
+- Pushed to a public GitHub repository and deployed to Vercel at [kestrel-pi.vercel.app](https://kestrel-pi.vercel.app), with the Telegram webhook re-pointed at the stable production URL.
 
 Built for the IGAD Hackathon 2026.
