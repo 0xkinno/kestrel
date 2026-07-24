@@ -1,0 +1,162 @@
+// Kestrel data model - see kestrel-instructions.md Section 6 for the loop this supports:
+// generate -> communicate -> understand -> act
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum HazardType {
+  FLOOD
+  DROUGHT
+  EXTREME_HEAT
+  STORM
+}
+
+enum Severity {
+  WATCH
+  WARNING
+  EMERGENCY
+}
+
+enum WarningStatus {
+  DRAFT
+  APPROVED
+  DISPATCHED
+}
+
+enum Channel {
+  TELEGRAM
+  SIMULATED_SMS
+  SIMULATED_USSD
+  IN_APP
+}
+
+enum DispatchStatus {
+  SENT
+  DELIVERED
+  FAILED
+}
+
+enum ConfirmationResponse {
+  UNDERSTOOD
+  NEED_MORE_INFO
+}
+
+model Location {
+  id        String   @id @default(cuid())
+  name      String
+  ward      String
+  country   String
+  lat       Float
+  lng       Float
+  createdAt DateTime @default(now())
+
+  hazardSignals HazardSignal[]
+  warnings      Warning[]
+  recipients    Recipient[]
+
+  @@unique([name, ward])
+}
+
+model HazardSignal {
+  id         String     @id @default(cuid())
+  type       HazardType
+  severity   Severity
+  locationId String
+  location   Location   @relation(fields: [locationId], references: [id])
+  rawData    Json
+  source     String
+  summary    String
+  observedAt DateTime   @default(now())
+  createdAt  DateTime   @default(now())
+
+  warnings Warning[]
+
+  @@index([locationId, observedAt])
+}
+
+model Warning {
+  id             String        @id @default(cuid())
+  hazardSignalId String        @unique
+  hazardSignal   HazardSignal  @relation(fields: [hazardSignalId], references: [id])
+  locationId     String
+  location       Location      @relation(fields: [locationId], references: [id])
+  severity       Severity
+  title          String
+  body           String
+  language       String        @default("en")
+  literacyLevel  String        @default("low")
+  status         WarningStatus @default(DRAFT)
+  aiModel        String
+  approvedBy     String?
+  approvedAt     DateTime?
+  dispatchedAt   DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  dispatches            Dispatch[]
+  escalationSuggestions EscalationSuggestion[]
+
+  @@index([status])
+}
+
+model Recipient {
+  id               String   @id @default(cuid())
+  name             String
+  locationId       String
+  location         Location @relation(fields: [locationId], references: [id])
+  isSimulated      Boolean  @default(true)
+  telegramChatId   String?  @unique
+  preferredChannel Channel  @default(SIMULATED_SMS)
+  createdAt        DateTime @default(now())
+
+  dispatches Dispatch[]
+
+  @@index([locationId])
+}
+
+model Dispatch {
+  id          String         @id @default(cuid())
+  warningId   String
+  warning     Warning        @relation(fields: [warningId], references: [id])
+  recipientId String
+  recipient   Recipient      @relation(fields: [recipientId], references: [id])
+  channel     Channel
+  status      DispatchStatus @default(SENT)
+  sentAt      DateTime       @default(now())
+  deliveredAt DateTime?
+
+  confirmation Confirmation?
+
+  @@index([warningId])
+  @@index([recipientId])
+}
+
+model Confirmation {
+  id                   String               @id @default(cuid())
+  dispatchId           String               @unique
+  dispatch             Dispatch             @relation(fields: [dispatchId], references: [id])
+  response             ConfirmationResponse
+  respondedAt          DateTime             @default(now())
+  timeToConfirmSeconds Int
+
+  @@index([response])
+}
+
+model EscalationSuggestion {
+  id              String   @id @default(cuid())
+  warningId       String
+  warning         Warning  @relation(fields: [warningId], references: [id])
+  reason          String
+  suggestedAction String
+  aiRationale     String
+  aiModel         String
+  createdAt       DateTime @default(now())
+
+  @@index([warningId])
+}

@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  /* Base palette: warm paper, ink, ochre. No pure black/white, no SaaS gray-blue, no dark mode. */
+  --color-paper: #f7f4ee;
+  --color-paper-dim: #efe9de;
+  --color-ink: #1a1815;
+  --color-ink-muted: #55504a;
+  --color-ink-faint: #8a847b;
+  --color-accent: #c8873a;
+  --color-accent-ink: #6b4319;
+  --color-hairline: rgba(26, 24, 21, 0.12);
+
+  /* Severity scale: tonal family with the accent, never neon red */
+  --color-severity-watch: #e3c482;
+  --color-severity-warning: #c8873a;
+  --color-severity-emergency: #8b3f2a;
+
+  --font-headline: var(--font-fraunces);
+  --font-body: var(--font-hanken);
+  --font-data: var(--font-plex-mono);
+}
+
+* {
+  border-color: var(--color-hairline);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-headline), serif;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
