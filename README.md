@@ -16,17 +16,17 @@
 
 Real captures from the running app, taken against live data (real hazard signals, real Groq output, real dashboard numbers), not mockups.
 
-| Officer console | Live map |
+| Landing page | Who this is for |
 |---|---|
-| ![Officer console](docs/screenshots/admin.png) | ![Live map](docs/screenshots/map.png) |
+| ![Landing page](docs/screenshots/landing-hero.png) | ![Who this is for](docs/screenshots/landing-community.png) |
 
-| Verification dashboard | Landing page |
+| Live map | Officer console |
 |---|---|
-| ![Verification dashboard](docs/screenshots/dashboard.png) | ![Landing page](docs/screenshots/landing-hero.png) |
+| ![Live map](docs/screenshots/map.png) | ![Officer console](docs/screenshots/admin.png) |
 
-| The core loop | Who this is for |
+| The core loop | Verification dashboard |
 |---|---|
-| ![The core loop](docs/screenshots/landing-loop.png) | ![Who this is for](docs/screenshots/landing-community.png) |
+| ![The core loop](docs/screenshots/landing-loop.png) | ![Verification dashboard](docs/screenshots/dashboard.png) |
 
 ---
 
