@@ -58,6 +58,10 @@ export async function sendWarningMessage(chatId: string, payload: WarningMessage
   });
 }
 
+export async function sendPlainMessage(chatId: string, text: string) {
+  return callTelegram("sendMessage", { chat_id: chatId, text });
+}
+
 export async function answerCallbackQuery(callbackQueryId: string, text: string) {
   return callTelegram("answerCallbackQuery", {
     callback_query_id: callbackQueryId,

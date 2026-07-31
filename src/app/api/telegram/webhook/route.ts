@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { answerCallbackQuery } from "@/lib/telegram";
+import { answerCallbackQuery, sendPlainMessage } from "@/lib/telegram";
 import { recordConfirmation } from "@/lib/confirmations";
 
 export const dynamic = "force-dynamic";
@@ -46,8 +46,17 @@ async function handleStart(message: NonNullable<TelegramUpdate["message"]>) {
   const chatId = String(message.chat.id);
   const wardQuery = message.text?.replace("/start", "").trim();
 
-  const existing = await prisma.recipient.findUnique({ where: { telegramChatId: chatId } });
-  if (existing) return;
+  const existing = await prisma.recipient.findUnique({
+    where: { telegramChatId: chatId },
+    include: { location: true },
+  });
+  if (existing) {
+    await sendPlainMessage(
+      chatId,
+      `You're already registered for early warnings in ${existing.location.name}, ${existing.location.country}. You'll get a message here whenever one is dispatched - tap Understood to confirm you received it, or Need more info if it's not clear.`
+    );
+    return;
+  }
 
   let location = wardQuery
     ? await prisma.location.findFirst({
@@ -64,7 +73,13 @@ async function handleStart(message: NonNullable<TelegramUpdate["message"]>) {
     )[0] ?? null;
   }
 
-  if (!location) return;
+  if (!location) {
+    await sendPlainMessage(
+      chatId,
+      "Welcome to Kestrel early warning. Registration isn't available right now - please try again shortly."
+    );
+    return;
+  }
 
   const name =
     [message.from?.first_name, message.from?.last_name].filter(Boolean).join(" ") ||
@@ -80,6 +95,11 @@ async function handleStart(message: NonNullable<TelegramUpdate["message"]>) {
       preferredChannel: "TELEGRAM",
     },
   });
+
+  await sendPlainMessage(
+    chatId,
+    `Welcome to Kestrel early warning. You will receive hazard warnings for ${location.name}, ${location.country} here. When a warning arrives, tap Understood to confirm you received it, or Need more info if the warning is not clear.`
+  );
 }
 
 async function handleCallback(callback: NonNullable<TelegramUpdate["callback_query"]>) {
