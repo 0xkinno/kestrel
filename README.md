@@ -37,6 +37,7 @@ Real captures from the running app, taken against live data (real hazard signals
 | **Live site** | [kestrel-pi.vercel.app](https://kestrel-pi.vercel.app) |
 | **Admin console** | [kestrel-pi.vercel.app/admin](https://kestrel-pi.vercel.app/admin) |
 | **Verification dashboard** | [kestrel-pi.vercel.app/dashboard](https://kestrel-pi.vercel.app/dashboard) |
+| **Video Demo** | [Youtube](https://youtu.be/Cp5nEVj63W4?si=kdMFJulgO8_DNh5F) |
 | **Telegram bot** | [@kestrel001_Bot](https://t.me/kestrel001_Bot) |
 | **GitHub** | [github.com/0xkinno/kestrel](https://github.com/0xkinno/kestrel) |
 | **Hackathon** | IGAD Hackathon 2026, Smarter Early Warning, Stronger Communities |
